@@ -17,26 +17,29 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     }
 });
 
+const getAccounts = function () {
+    return process.env.MASK_PRIVATE_KEY_A1 !== undefined ? [process.env.MASK_PRIVATE_KEY_A1] : [];
+};
+
 const config: HardhatUserConfig = {
-    solidity: "0.8.10",
+    solidity: "0.8.4",
     networks: {
         fuji: {
-            url: "https://api.avax-test.network/ext/bc/C/rpc",
-            accounts:
-                process.env.MASK_PRIVATE_KEY_A1 !== undefined ? [`0x${process.env.MASK_PRIVATE_KEY_A1}`] : [],
+            url: process.env.FUJI_TESTNET_URL || "",
+            accounts: getAccounts(),
             chainId: 43113,
-            gasPrice: 225000000000
+            gas: 2200000
         },
         rinkeby: {
-            url: process.env.ALCHEMY_PREP_URL_RINKEBY || "",
-            accounts:
-                process.env.MASK_PRIVATE_KEY_A1 !== undefined ? [process.env.MASK_PRIVATE_KEY_A1] : [],
+            url: process.env.RINKEBY_ALCHEMY_NOAHBAY_URL || "",
+            accounts: getAccounts(),
+            chainId: 4,
+            gas: 2200000
         },
         mumbai: {
-            url: "https://rpc-mumbai.maticvigil.com",
-            accounts:
-                process.env.MASK_PRIVATE_KEY_A1 !== undefined ? [process.env.MASK_PRIVATE_KEY_A1] : [],
-            gasPrice: 8000000000
+            url: process.env.MUMBAI_TESTNET_URL || "",
+            accounts: getAccounts(),
+            gas: 2200000
         }
     },
     gasReporter: {

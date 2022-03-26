@@ -33,7 +33,9 @@ See all Layer0 official (testnet) endpoint addresses: https://layerzero.gitbook.
 
 ## Deployed Contract Addresses
 
-* TK
+* Fuji (Avalanche Testnet): https://testnet.snowtrace.io/address/0xF2656CCFfd9D4150C4BAecB9e1C0D3100C85C8A9
+* Rinkeby (Ethereum Testnet): https://rinkeby.etherscan.io/address/0x4286f9f9dBAd326e08B951331B54607dc1Aaf8e6
+* Mumbai (Polygon Testnet): https://mumbai.polygonscan.com/address/0xe3F9324060494352fdE595f97711Ffc80500ADd2
 
 ---
 
