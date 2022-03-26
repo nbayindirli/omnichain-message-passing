@@ -58,6 +58,8 @@ contract SatelliteCounter is ICounterDeployment, ReentrancyGuard {
     ) external payable nonReentrant override(ICounterDeployment) returns (int256 count) {
         bytes memory payload = abi.encode(
             Function.GET_COUNT,
+            int256(0),
+            Operation(0),
             _satelliteCounterAddress
         );
 
