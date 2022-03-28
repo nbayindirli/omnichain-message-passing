@@ -33,7 +33,7 @@ contract MasterCounter is ICounterDeployment, ReentrancyGuard {
         Operation _op,
         address _satelliteCounterAddress
     ) public payable override(ICounterDeployment) {
-        /* switch (Function) */
+        /* switch (Operation) */
         if (/* case: */ Operation.ADD == _op)
         {
             counter[_satelliteCounterAddress] += _value;
