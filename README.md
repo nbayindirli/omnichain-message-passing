@@ -37,6 +37,11 @@ See all Layer0 official (testnet) endpoint addresses: https://layerzero.gitbook.
 * Rinkeby (Ethereum Testnet): https://rinkeby.etherscan.io/address/0x914c4486d1435efBB6Ae46E4c9FBF2cA9C71643f
 * Mumbai (Polygon Testnet): https://mumbai.polygonscan.com/address/0xCf60FFf0Ad44c019b0DDf591Ab9F69Af720894d7
 
+### To Make `updateCount()` & `getCount()` Calls
+
+* updateCount(): `hh run scripts/call_updateCount.ts --network rinkeby`
+* getCount(): `hh run scripts/call_getCount.ts --network rinkeby`
+
 ---
 
 ## Commands
