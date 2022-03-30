@@ -6,9 +6,9 @@ import { CHAIN_IDS_AND_ENDPOINTS } from "./util/chainIdsAndEndpoints";
 async function main() {
     console.log('Deploying SatelliteCounter on %s network.', hardhat.network.name);
 
-    const fujiMasterCounterAddress = '0xF2656CCFfd9D4150C4BAecB9e1C0D3100C85C8A9';
-    const rinkebySatelliteCounterAddress = '0x4286f9f9dBAd326e08B951331B54607dc1Aaf8e6';
-    const mumbaiSatelliteCounterAddress = '0xe3F9324060494352fdE595f97711Ffc80500ADd2';
+    const fujiMasterCounterAddress = '0x408F593195bbC0EC582Dcd0CDD003020a8a16929';
+    const rinkebySatelliteCounterAddress = '0x914c4486d1435efBB6Ae46E4c9FBF2cA9C71643f';
+    const mumbaiSatelliteCounterAddress = '0xCf60FFf0Ad44c019b0DDf591Ab9F69Af720894d7';
 
     const [deployer] = await ethers.getSigners();
 
