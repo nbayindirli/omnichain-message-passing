@@ -83,7 +83,7 @@ contract SatelliteCounter is ICounterDeployment, ReentrancyGuard {
             gasForDestinationLzReceive
         );
 
-        (uint messageFee,) = endpoint.estimateFees(
+        (uint256 messageFee,) = endpoint.estimateFees(
             _dstChainId,
             address(this),
             _payload,
