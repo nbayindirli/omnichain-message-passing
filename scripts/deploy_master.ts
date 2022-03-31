@@ -11,7 +11,9 @@ async function main() {
     const [deployer] = await ethers.getSigners();
 
     const masterCounter: MasterCounter = await new MasterCounter__factory(deployer).deploy(
-        CHAIN_IDS_AND_ENDPOINTS[masterNetwork].endpoint
+        CHAIN_IDS_AND_ENDPOINTS[masterNetwork].endpoint,
+        //@ts-ignore
+        { value: ethers.utils.parseEther('3') }
     );
 
     console.log('MasterCounter deployed at %s on %s network.', masterCounter.address, masterNetwork);

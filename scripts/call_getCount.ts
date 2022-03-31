@@ -11,7 +11,7 @@ async function main() {
     console.log("Retrieved SatelliteCounter at %s on %s network.", satelliteCounter.address, satelliteNetwork);
 
     const satelliteCounterAddress = satelliteCounter.address;
-    const msg_value = '0.66';
+    const msg_value = '0.05';
 
     console.log("Calling getCount(%s) for %s on %s network...", satelliteCounterAddress, satelliteCounter.address, satelliteNetwork);
 

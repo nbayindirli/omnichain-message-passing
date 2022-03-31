@@ -26,7 +26,7 @@ contract SatelliteCounter is ICounterDeployment, ReentrancyGuard {
         uint16 _masterChainId,
         address _masterCounterAddress,
         address _endpoint
-    ) {
+    ) payable {
         masterChainId = _masterChainId;
         masterCounterBytesAddress = abi.encodePacked(_masterCounterAddress);
         endpoint = ILayerZeroEndpoint(_endpoint);
@@ -76,11 +76,28 @@ contract SatelliteCounter is ICounterDeployment, ReentrancyGuard {
         bytes memory _dstBytesAddress,
         bytes memory _payload
     ) public payable override(ICounterDeployment) {
-        endpoint.send{value: msg.value}(
+        uint16 version = 1;
+        uint gasForDestinationLzReceive = 350000;
+        bytes memory adapterParams = abi.encodePacked(
+            version,
+            gasForDestinationLzReceive
+        );
+
+        (uint messageFee,) = endpoint.estimateFees(
+            _dstChainId,
+            address(this),
+            _payload,
+            false,
+            adapterParams
+        );
+
+        require(address(this).balance >= messageFee, "messageFee higher than balance");
+
+        endpoint.send{value: messageFee}(
             _dstChainId,
             _dstBytesAddress,
             _payload,
-            payable(msg.sender),
+            payable(this),
             address(0),
             bytes("")
         );
@@ -106,4 +123,7 @@ contract SatelliteCounter is ICounterDeployment, ReentrancyGuard {
 
         emit CountReceived(address(this), satelliteCounterAddress, count);
     }
+
+    fallback() external payable {}
+    receive() external payable {}
 }

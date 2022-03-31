@@ -14,7 +14,9 @@ async function main() {
     const satelliteCounter: SatelliteCounter = await new SatelliteCounter__factory(deployer).deploy(
         CHAIN_IDS_AND_ENDPOINTS[masterNetwork].chainId,
         CHAIN_IDS_AND_ENDPOINTS[masterNetwork].contractAddress,
-        CHAIN_IDS_AND_ENDPOINTS[satelliteNetwork].endpoint
+        CHAIN_IDS_AND_ENDPOINTS[satelliteNetwork].endpoint,
+        //@ts-ignore
+        { value: ethers.utils.parseEther('0.1') }
     );
 
     console.log('SatelliteCounter deployed at %s on %s network with %s MasterCounter.', satelliteCounter.address, satelliteNetwork, masterNetwork);

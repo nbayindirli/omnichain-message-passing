@@ -33,9 +33,9 @@ See all Layer0 official (testnet) endpoint addresses: https://layerzero.gitbook.
 
 ## Deployed Contract Addresses
 
-* Fuji (Avalanche Testnet): https://testnet.snowtrace.io/address/0x408F593195bbC0EC582Dcd0CDD003020a8a16929
-* Rinkeby (Ethereum Testnet): https://rinkeby.etherscan.io/address/0x914c4486d1435efBB6Ae46E4c9FBF2cA9C71643f
-* Mumbai (Polygon Testnet): https://mumbai.polygonscan.com/address/0xCf60FFf0Ad44c019b0DDf591Ab9F69Af720894d7
+* Fuji (Avalanche Testnet): https://testnet.snowtrace.io/address/0x6606E4ce7f3caEa836970037Df05D1eA9311E138
+* Rinkeby (Ethereum Testnet): https://rinkeby.etherscan.io/address/0x4dBCFBe798776FE44b33a1fa94b81f8463D9def0
+* Mumbai (Polygon Testnet): https://mumbai.polygonscan.com/address/0xea6e77fBee2D7825377103950D4a4d0161845857
 
 ### To Make `updateCount()` & `getCount()` Calls
 

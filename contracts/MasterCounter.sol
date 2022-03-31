@@ -21,7 +21,7 @@ contract MasterCounter is ICounterDeployment, ReentrancyGuard {
 
     ILayerZeroEndpoint public endpoint;
 
-    constructor(address _endpoint) {
+    constructor(address _endpoint) payable {
         endpoint = ILayerZeroEndpoint(_endpoint);
     }
 
@@ -69,11 +69,28 @@ contract MasterCounter is ICounterDeployment, ReentrancyGuard {
         bytes memory _dstBytesAddress,
         bytes memory _payload
     ) public payable override(ICounterDeployment) {
-        endpoint.send{value: msg.value}(
+        uint16 version = 1;
+        uint gasForDestinationLzReceive = 350000;
+        bytes memory adapterParams = abi.encodePacked(
+            version,
+            gasForDestinationLzReceive
+        );
+
+        (uint messageFee,) = endpoint.estimateFees(
+            _dstChainId,
+            address(this),
+            _payload,
+            false,
+            adapterParams
+        );
+
+        require(address(this).balance >= messageFee, "messageFee higher than balance");
+
+        endpoint.send{value: messageFee}(
             _dstChainId,
             _dstBytesAddress,
             _payload,
-            payable(msg.sender),
+            payable(this),
             address(0),
             bytes("")
         );
@@ -140,4 +157,7 @@ contract MasterCounter is ICounterDeployment, ReentrancyGuard {
             convertedAddress := mload(add(_bytesAddress, 20))
         }
     }
+
+    fallback() external payable {}
+    receive() external payable {}
 }

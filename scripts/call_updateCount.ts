@@ -12,7 +12,7 @@ async function main() {
 
     const value = 17;
     const op = 0;
-    const msg_value = '0.66';
+    const msg_value = '0.05';
 
     console.log("Calling updateCount(value: %s, op: %s) for %s on %s network...", value, op, satelliteCounter.address, satelliteNetwork);
 
